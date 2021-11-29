@@ -29,8 +29,8 @@ public class Board {
         return ocean[x][y] == null;
     }
 
-    /*public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
+    public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
         int size = ship.shipType.size;
-        return isInsideBoard(x, y, size, direction) && isEmpty( int x, int y);
-    }*/
+        return isInsideBoard(x, y, size, direction) && isEmpty(x, y);
+    }
 }
