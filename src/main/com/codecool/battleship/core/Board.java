@@ -1,4 +1,6 @@
-class Board {
+package com.codecool.battleship.core;
+
+public class Board {
 
     private Square[][] ocean;
 
@@ -11,7 +13,7 @@ class Board {
     }
 
     public void setOcean(int x, int y, Square value) {
-        ocean[indexX][indexY] = value;
+        ocean[x][y] = value;
     }
 
     private boolean isInsideBoard(int x, int y, int size, String direction) {
@@ -27,8 +29,8 @@ class Board {
         return ocean[x][y] == null;
     }
 
-    public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
+    /*public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
         int size = ship.shipType.size;
         return isInsideBoard(x, y, size, direction) && isEmpty( int x, int y);
-    }
+    }*/
 }
