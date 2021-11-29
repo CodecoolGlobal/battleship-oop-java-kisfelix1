@@ -10,7 +10,25 @@ class Board {
         return ocean;
     }
 
-    public void setOcean(int indexX, int indexY, Square value){
+    public void setOcean(int x, int y, Square value) {
         ocean[indexX][indexY] = value;
+    }
+
+    private boolean isInsideBoard(int x, int y, int size, String direction) {
+        int xEnd = direction.equals("vertical") ? x + size : x;
+        int yEnd = direction.equals("horizontal") ? y + size : y;
+        return x >= 0 &&
+                y >= 0 &&
+                xEnd < ocean.length &&
+                yEnd < ocean.length;
+    }
+
+    private boolean isEmpty(int x, int y){
+        return ocean[x][y] == null;
+    }
+
+    public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
+        int size = ship.shipType.size;
+        return isInsideBoard(x, y, size, direction) && isEmpty(int x, int y);
     }
 }
