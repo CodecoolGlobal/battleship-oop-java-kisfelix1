@@ -9,4 +9,8 @@ class Square {
         status = SquareStatus.Empty;
     }
 
+    @java.lang.Override
+    public java.lang.String toString() {
+        return status;
+    }
 }
