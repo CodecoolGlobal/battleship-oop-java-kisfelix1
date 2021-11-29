@@ -2,6 +2,9 @@ class Square {
 
     public enum SquareStatus {
         EMPTY, SHIP, HIT, MISSED;
+        public GetCharacter(){
+            //TODO: unicode character representation
+        }
     }
 
     private final int x;
