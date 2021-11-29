@@ -1,4 +1,9 @@
 class Square {
+
+    public enum SquareStatus {
+        EMPTY, SHIP, HIT, MISSED;
+    }
+
     private final int x;
     private final int y;
     private SquareStatus status;
@@ -6,7 +11,7 @@ class Square {
     public Square(x, y) {
         this.x = x;
         this.y = y;
-        status = SquareStatus.Empty;
+        status = SquareStatus.EMPTY;
     }
 
     @java.lang.Override
