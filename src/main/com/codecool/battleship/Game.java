@@ -17,7 +17,6 @@ public class Game {
 
     private void setup() {
         BoardFactory boardFactory = new BoardFactory(board);
-
     }
 
     private void gameCycle() {
