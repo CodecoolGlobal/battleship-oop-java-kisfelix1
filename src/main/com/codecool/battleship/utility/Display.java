@@ -12,9 +12,9 @@ public class Display {
     }
 
     public void printMainMenu() {
-        println("[1]Start new game" +
-                "[2]Start new game with different game mode" +
-                "[3]Exit");
+        println("[1]Start new game\n" +
+                "[2]Start new game with different game mode\n" +
+                "[3]Exit\n");
     }
 
     public void printBoard(int boardSize) {
