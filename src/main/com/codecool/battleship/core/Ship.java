@@ -26,7 +26,7 @@ public class Ship {
 
     public void addPosition(Square square){
         shipPositions.add(square);
-        square.setStatus(Square.SquareStatus.SHIP);
+        square.setStatus(SquareStatus.SHIP);
     }
 
 }

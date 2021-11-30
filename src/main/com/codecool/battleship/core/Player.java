@@ -3,7 +3,7 @@ package com.codecool.battleship.core;
 import java.util.ArrayList;
 
 public class Player {
-    ArrayList<Ship> playerShips = new ArrayList<Ship>();
+    ArrayList<Ship> playerShips = new ArrayList<>();
     public Board board;
 
     public Player() {
@@ -17,7 +17,7 @@ public class Player {
     public boolean isAlive() {
         for (Ship playerShip : playerShips) {
             for (Square shipSquare : playerShip.getPositions()) {
-                if (shipSquare.getStatus() == Square.SquareStatus.SHIP) {
+                if (shipSquare.getStatus() == SquareStatus.SHIP) {
                     return true;
                 }
             }

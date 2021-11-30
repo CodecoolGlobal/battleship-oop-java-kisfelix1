@@ -31,16 +31,15 @@ public class Board {
     }
 
     private boolean isEmpty(int x, int y, Ship.ShipType type, String direction) {
-        if(direction.equals("horizontal")){
-            for (int i = y; i < y+ type.shipSize; i++) {
-                if(!ocean[x][i].getStatus().equals(Square.SquareStatus.EMPTY)){
+        if (direction.equals("horizontal")) {
+            for (int i = y; i < y + type.shipSize; i++) {
+                if (!ocean[x][i].getStatus().equals(SquareStatus.EMPTY)) {
                     return false;
                 }
             }
-        }
-        else{
+        } else {
             for (int i = x; i < x + type.shipSize; i++) {
-                if(!ocean[i][y].getStatus().equals(Square.SquareStatus.EMPTY)){
+                if (!ocean[i][y].getStatus().equals(SquareStatus.EMPTY)) {
                     return false;
                 }
             }
