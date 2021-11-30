@@ -13,9 +13,6 @@ public class Ship {
             size = shipSize;
         }
     }
-
-
-    private ArrayList<Square> shipPositions = new ArrayList<>();
     public ShipType type;
 
 
