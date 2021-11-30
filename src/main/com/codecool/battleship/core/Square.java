@@ -19,6 +19,10 @@ public class Square {
         status = SquareStatus.EMPTY;
     }
 
+    public SquareStatus getStatus() {
+        return status;
+    }
+
     @java.lang.Override
     public java.lang.String toString() {
         return status.toString();

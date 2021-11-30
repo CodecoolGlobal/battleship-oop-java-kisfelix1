@@ -3,6 +3,7 @@ package com.codecool.battleship.core;
 import java.util.ArrayList;
 
 public class Ship {
+    private ArrayList<Square> shipPositions = new ArrayList<Square>();
 
     public enum ShipType {
         CARRIER(5), CRUISER(3), BATTLESHIP(4), SUBMARINE(3), DESTROYER(2);
@@ -24,8 +25,8 @@ public class Ship {
         }
     }
 
-    public int getSize() {
-        return type.shipSize;
+    public ArrayList<Square> getPositions() {
+        return shipPositions;
     }
 
 }
