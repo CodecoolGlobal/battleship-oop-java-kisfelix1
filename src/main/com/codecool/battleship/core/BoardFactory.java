@@ -11,7 +11,7 @@ public class BoardFactory {
     public BoardFactory(Player player) {
         board = new Board(MAP_SIZE);
         this.player = player;
-        this.player.board = board;
+        this.player.setBoard(board);
         randomPlacement();
     }
 

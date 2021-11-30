@@ -4,10 +4,18 @@ import java.util.ArrayList;
 
 public class Player {
     ArrayList<Ship> playerShips = new ArrayList<>();
-    public Board board;
+    private Board board;
 
     public Player() {
         BoardFactory boardFactory = new BoardFactory(this);
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board){
+        this.board = board;
     }
 
     public void addShip(Ship ship) {
