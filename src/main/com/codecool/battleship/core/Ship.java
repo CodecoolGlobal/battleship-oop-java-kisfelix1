@@ -20,4 +20,8 @@ public class Ship {
         }
     }
 
+    public ArrayList<Square> getPositions() {
+        return shipPositions;
+    }
+
 }
