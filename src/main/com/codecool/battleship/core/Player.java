@@ -2,11 +2,12 @@ package com.codecool.battleship.core;
 
 import java.util.ArrayList;
 
-public abstract class Player {
+public class Player {
     ArrayList<Ship> playerShips = new ArrayList<Ship>();
+    Board board;
 
     public Player() {
-
+        BoardFactory boardFactory = new BoardFactory(board,this);
     }
 
     public void addShip(Ship ship) {

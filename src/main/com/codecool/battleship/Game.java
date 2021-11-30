@@ -2,13 +2,16 @@ package com.codecool.battleship;
 
 import com.codecool.battleship.core.Board;
 import com.codecool.battleship.core.BoardFactory;
+import com.codecool.battleship.core.Player;
 import com.codecool.battleship.utility.*;
 
 
 public class Game {
     private static final Display display = new Display();
     private static final Input input = new Input();
-    private Board board;
+
+    private Player player1;
+    private Player player2;
 
     public Game() {
         setup();
@@ -16,7 +19,8 @@ public class Game {
     }
 
     private void setup() {
-        BoardFactory boardFactory = new BoardFactory(board);
+        player1 = new Player();
+        player2 = new Player();
     }
 
     private void gameCycle() {

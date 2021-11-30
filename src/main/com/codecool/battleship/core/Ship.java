@@ -16,14 +16,16 @@ public class Ship {
     public ShipType type;
 
 
-    public Ship(ShipType type, Square... squares) {
-        for (Square square : squares) {
-            this.shipPositions.add(square);
-        }
+    public Ship(ShipType type) {
+        this.type = type;
     }
 
     public ArrayList<Square> getPositions() {
         return shipPositions;
+    }
+
+    public void addPosition(Square square){
+        shipPositions.add(square);
     }
 
 }
