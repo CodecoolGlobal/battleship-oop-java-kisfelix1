@@ -46,4 +46,8 @@ public class Display {
         finalBoard += "\n"+boardTopBottom;
         System.out.println(finalBoard);
     }
+
+    public void printWinner(int player) {
+        println("Player "+ player + " has won the game!");
+    }
 }
