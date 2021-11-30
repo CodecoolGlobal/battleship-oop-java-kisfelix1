@@ -34,13 +34,14 @@ public class BoardFactory {
     }
 
     private void placeShip(int x, int y, Ship ship, String direction) {
+        int shipSize = ship.getType().shipSize;
         if (direction.equals("horizontal")) {
-            for (int i = y; i < y + ship.type.shipSize; i++) {
+            for (int i = y; i < y + shipSize; i++) {
                 ship.addPosition(board.getOcean()[x][i]);
             }
         }
         else {
-            for (int i = y; i < y + ship.type.shipSize; i++) {
+            for (int i = y; i < y + shipSize; i++) {
                 ship.addPosition(board.getOcean()[i][y]);
             }
         }

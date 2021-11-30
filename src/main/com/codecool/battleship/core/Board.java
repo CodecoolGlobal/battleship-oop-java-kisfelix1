@@ -48,7 +48,7 @@ public class Board {
     }
 
     public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
-        int size = ship.type.shipSize;
-        return isInsideBoard(x, y, size, direction) && isEmpty(x, y, ship.type, direction);
+        int size = ship.getType().shipSize;
+        return isInsideBoard(x, y, size, direction) && isEmpty(x, y, ship.getType(), direction);
     }
 }

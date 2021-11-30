@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ship {
     private ArrayList<Square> shipPositions = new ArrayList<>();
 
-    public ShipType type;
+    private ShipType type;
 
 
     public Ship(ShipType type) {
@@ -21,4 +21,7 @@ public class Ship {
         square.setStatus(SquareStatus.SHIP);
     }
 
+    public ShipType getType() {
+        return type;
+    }
 }
