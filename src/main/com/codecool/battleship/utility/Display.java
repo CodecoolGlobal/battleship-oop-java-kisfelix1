@@ -1,5 +1,8 @@
 package com.codecool.battleship.utility;
 
+import com.codecool.battleship.core.Board;
+import com.codecool.battleship.core.Square;
+
 public class Display {
     private final static int ASCII_CHARACTER_A = 65;
 
@@ -17,38 +20,33 @@ public class Display {
                 "[3]Exit\n");
     }
 
-    public void printBoard(int boardSize) {
-        String finalBoard = "";
-        String boardCordNumbers = "";
-        String boardTopBottom = "";
-        for (int row = 0; row < boardSize + 1; row++) {   //Generates the top and bottom part of the board, according to
-            if (row == 0) {                             //the board size
-                boardCordNumbers += "    ";
-                boardTopBottom += "  - ";
-            }
-            if (row == boardSize) {
-                boardCordNumbers += " \n";
-                boardTopBottom += "- \n";
-            } else {
-                boardCordNumbers += (row + 1) + " ";
-                boardTopBottom += "- ";
-            }
+    public void printBoard(Board board) {
+        int boardSize = board.getOcean().length;
+        print("  ");
+        for (int i = 1; i <= boardSize; i++){
+            print(i + " ");
         }
-        finalBoard += boardCordNumbers + boardTopBottom;
-        for (int row = 0; row < boardSize; row++) {
-            for (int col = 0; col < boardSize; col++) {
-                if (col == 0) {
-                    finalBoard += row == 0 ? (char) (ASCII_CHARACTER_A + row) + " | " : "|\n" + (char) (ASCII_CHARACTER_A + row) + " | ";
+        println("");
+        for (int i = 0; i < boardSize; i++){
+            print((char)(i + ASCII_CHARACTER_A) + " ");
+            for (int j = 0; j < boardSize; j++){
+                switch (board.getOcean()[i][j].getStatus()) {
+                    case SHIP:
+                        print("S ");
+                        break;
+                    case MISSED:
+                        print("M ");
+                        break;
+                    case EMPTY:
+                        print(". ");
+                        break;
+                    case HIT:
+                        print("H ");
+                        break;
                 }
-                finalBoard += ". ";
-                if (row == boardSize - 1 && col == boardSize - 1) {
-                    finalBoard += "|";
-                }
-                // NEED BOARD(OCEAN)
             }
+            println("");
         }
-        finalBoard += "\n" + boardTopBottom;
-        System.out.println(finalBoard);
     }
 
     public void printWinner(int player) {
