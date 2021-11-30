@@ -16,12 +16,12 @@ public class BoardFactory {
     }
 
     public void randomPlacement() {
-        for (Ship.ShipType type : Ship.ShipType.values()) {
+        for (ShipType type : ShipType.values()) {
             tryRandomPlaceShip(type, "horizontal");
         }
     }
 
-    private void tryRandomPlaceShip(Ship.ShipType type, String direction) {
+    private void tryRandomPlaceShip(ShipType type, String direction) {
         int x = rand.nextInt(board.getOcean().length - type.shipSize);
         int y = rand.nextInt(board.getOcean().length - type.shipSize);
         Ship ship = new Ship(type);
@@ -47,7 +47,7 @@ public class BoardFactory {
         player.addShip(ship);
     }
 
-    public void manualPlacement(Ship.ShipType type) {
+    public void manualPlacement(ShipType type) {
 
     }
 }
