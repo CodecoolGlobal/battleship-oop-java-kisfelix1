@@ -12,10 +12,10 @@ public class Game {
 
     private Player player1;
     private Player player2;
+    private Player currentRoundPlayer;
 
     public Game() {
         setup();
-        gameCycle();
     }
 
     private void setup() {
@@ -23,7 +23,7 @@ public class Game {
         player2 = new Player();
     }
 
-    private void gameCycle() {
+    public void gameCycle() {
         while (!checkWin()) {
             display.printBoard(player1.board);
             playerShoot();
