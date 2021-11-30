@@ -1,4 +1,4 @@
-package com.codecool.battleship.Util;
+package com.codecool.battleship.utility;
 
 public class Display {
     private final static int ASCII_CHARACTER_A = 65;

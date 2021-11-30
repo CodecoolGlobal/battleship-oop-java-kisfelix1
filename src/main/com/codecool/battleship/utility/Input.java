@@ -1,4 +1,4 @@
-package com.codecool.battleship.Util;
+package com.codecool.battleship.utility;
 
 import java.util.Scanner;
 
