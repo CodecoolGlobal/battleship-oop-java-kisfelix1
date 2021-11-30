@@ -19,7 +19,7 @@ public class Square {
         this.status = status;
     }
 
-    @java.lang.Override
+    @Override
     public java.lang.String toString() {
         return status.toString();
     }
