@@ -1,8 +1,15 @@
 package com.codecool.battleship.core;
 
-public class BoardFactory{
-    public BoardFactory() {
+public class BoardFactory {
+    private Board board;
+
+    public BoardFactory(Board board) {
+        this.board = board;
     }
-    public void randomPlacement(){}
-    public void manualPlacement(){}
+
+    public void randomPlacement() {
+    }
+
+    public void manualPlacement() {
+    }
 }
