@@ -5,9 +5,14 @@ import java.util.ArrayList;
 public abstract class Player {
     ArrayList<Ship> playerShips = new ArrayList<Ship>();
 
-    public Player(Ship ship) {
+    public Player() {
+
+    }
+
+    public void addShip(Ship ship) {
         playerShips.add(ship);
     }
+
     public boolean isAlive() {
         for (Ship playerShip : playerShips) {
             for (Square shipSquare : playerShip.getPositions()) {
