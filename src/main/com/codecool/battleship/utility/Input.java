@@ -1,4 +1,4 @@
-package com.codecool.battleship.Util;
+package com.codecool.battleship.utility;
 
 import java.util.Scanner;
 
@@ -15,8 +15,8 @@ public String askPlacementCoordinate() {
         }
     }
 }
-public String askAttackCoordinate() {
-    display.println("(PLAYER PLACEHOLDER), input an attack coordinate!");
+public String askAttackCoordinate(int player) {
+    display.println("Player " + player + ", input an attack coordinate!");
     String userInput = inputScan.nextLine();
     return userInput;
 }
