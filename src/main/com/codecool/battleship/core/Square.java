@@ -3,9 +3,9 @@ package com.codecool.battleship.core;
 public class Square {
 
     public enum SquareStatus {
-        EMPTY, SHIP, HIT, MISSED;
+        EMPTY, SHIP, HIT, MISSED
         /*public GetCharacter(){
-            //TODO: unicode character representation
+            //unicode representation
         }*/
     }
 

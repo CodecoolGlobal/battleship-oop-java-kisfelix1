@@ -7,6 +7,14 @@ public class Game {
     private Board board;
 
     public Game() {
-        board = new Board(10);
+        setup();
+        gameCycle();
+    }
+
+    private void gameCycle() {
+    }
+
+    private void setup() {
+        
     }
 }
