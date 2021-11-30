@@ -4,6 +4,6 @@ public class HumanPlayer extends Player {
 
 
     public HumanPlayer(Ship ship) {
-        super(ship);
+        super();
     }
 }

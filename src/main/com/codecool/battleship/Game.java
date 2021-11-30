@@ -20,12 +20,13 @@ public class Game {
 
     private void setup() {
         player1 = new Player();
+        System.out.println("aaa");
         player2 = new Player();
     }
 
     private void gameCycle() {
         while (!checkWin()) {
-            display.printBoard(10);
+            //display.printBoard(10);
             playerShoot();
             //changeCurrentPlayer();
 

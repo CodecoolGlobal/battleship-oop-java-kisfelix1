@@ -6,6 +6,11 @@ public class Board {
 
     public Board(int mapSize) {
         ocean = new Square[mapSize][mapSize];
+        for (int i = 0; i < ocean.length; i++) {
+            for (int j = 0; j < ocean.length; j++) {
+                ocean[i][j] = new Square(i, j);
+            }
+        }
     }
 
     public Square[][] getOcean() {
@@ -26,7 +31,7 @@ public class Board {
     }
 
     private boolean isEmpty(int x, int y) {
-        return ocean[x][y] == null;
+        return ocean[x][y].getStatus() == Square.SquareStatus.EMPTY;
     }
 
     public boolean isPlacementOk(int x, int y, Ship ship, String direction) {

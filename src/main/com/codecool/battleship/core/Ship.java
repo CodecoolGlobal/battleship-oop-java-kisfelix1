@@ -10,7 +10,7 @@ public class Ship {
         public int shipSize;
 
         ShipType(int size) {
-            size = shipSize;
+            shipSize = size;
         }
     }
     public ShipType type;

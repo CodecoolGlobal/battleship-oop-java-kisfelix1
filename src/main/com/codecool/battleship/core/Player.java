@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Player {
     ArrayList<Ship> playerShips = new ArrayList<Ship>();
-    Board board;
+    public Board board;
 
     public Player() {
-        BoardFactory boardFactory = new BoardFactory(board,this);
+        BoardFactory boardFactory = new BoardFactory(this);
     }
 
     public void addShip(Ship ship) {
