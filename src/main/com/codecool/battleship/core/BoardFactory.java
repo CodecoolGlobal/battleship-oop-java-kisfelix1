@@ -38,13 +38,15 @@ public class BoardFactory {
         if (direction.equals("horizontal")) {
             int toYCoordinate = fromYCoordinate + shipSize;
             for (int column = fromYCoordinate; column < toYCoordinate; column++) {
-                ship.addPosition(board.getOcean()[fromXCoordinate][column]);
+                Square targetSquare = board.getSquare(fromXCoordinate, column);
+                ship.addPosition(targetSquare);
             }
         }
         else {
             int toXCoordinate = fromXCoordinate + shipSize;
             for (int row = fromXCoordinate; row < toXCoordinate; row++) {
-                ship.addPosition(board.getOcean()[row][fromYCoordinate]);
+                Square targetSquare = board.getSquare(row, fromYCoordinate);
+                ship.addPosition(targetSquare);
             }
         }
         player.addShip(ship);

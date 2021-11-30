@@ -16,6 +16,9 @@ public class Board {
     public Square[][] getOcean() {
         return ocean;
     }
+    public Square getSquare(int x, int y){
+        return ocean[x][y];
+    }
 
     public void setOcean(int x, int y, Square value) {
         ocean[x][y] = value;
