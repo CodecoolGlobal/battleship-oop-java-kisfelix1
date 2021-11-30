@@ -33,16 +33,18 @@ public class BoardFactory {
         }
     }
 
-    private void placeShip(int x, int y, Ship ship, String direction) {
+    private void placeShip(int fromXCoordinate, int fromYCoordinate, Ship ship, String direction) {
         int shipSize = ship.getType().shipSize;
         if (direction.equals("horizontal")) {
-            for (int i = y; i < y + shipSize; i++) {
-                ship.addPosition(board.getOcean()[x][i]);
+            int toYCoordinate = fromYCoordinate + shipSize;
+            for (int column = fromYCoordinate; column < toYCoordinate; column++) {
+                ship.addPosition(board.getOcean()[fromXCoordinate][column]);
             }
         }
         else {
-            for (int i = y; i < y + shipSize; i++) {
-                ship.addPosition(board.getOcean()[i][y]);
+            int toXCoordinate = fromXCoordinate + shipSize;
+            for (int row = fromXCoordinate; row < toXCoordinate; row++) {
+                ship.addPosition(board.getOcean()[row][fromYCoordinate]);
             }
         }
         player.addShip(ship);
