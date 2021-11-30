@@ -13,7 +13,6 @@ public class BoardFactory {
         this.player = player;
         this.player.board = board;
         randomPlacement();
-        player = this.player;
     }
 
     public void randomPlacement() {
@@ -35,15 +34,13 @@ public class BoardFactory {
 
     private void placeShip(int x, int y, Ship ship, String direction) {
         if (direction.equals("horizontal")) {
-            for (int i = x; i < x + ship.type.shipSize; i++) {
-                ship.addPosition(board.getOcean()[i][y]);
-                board.getOcean()[i][y].setStatus(Square.SquareStatus.SHIP);
+            for (int i = y; i < y + ship.type.shipSize; i++) {
+                ship.addPosition(board.getOcean()[x][i]);
             }
         }
         else {
             for (int i = y; i < y + ship.type.shipSize; i++) {
-                ship.addPosition(board.getOcean()[x][i]);
-                board.getOcean()[x][i].setStatus(Square.SquareStatus.SHIP);
+                ship.addPosition(board.getOcean()[i][y]);
             }
         }
         player.addShip(ship);

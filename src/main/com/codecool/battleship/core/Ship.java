@@ -3,10 +3,10 @@ package com.codecool.battleship.core;
 import java.util.ArrayList;
 
 public class Ship {
-    private ArrayList<Square> shipPositions = new ArrayList<Square>();
+    private ArrayList<Square> shipPositions = new ArrayList<>();
 
     public enum ShipType {
-        CARRIER(5), CRUISER(3), BATTLESHIP(4), SUBMARINE(3), DESTROYER(2);
+        CARRIER(5), BATTLESHIP(4), SUBMARINE(3), DESTROYER(2);
         public int shipSize;
 
         ShipType(int size) {
@@ -26,6 +26,7 @@ public class Ship {
 
     public void addPosition(Square square){
         shipPositions.add(square);
+        square.setStatus(Square.SquareStatus.SHIP);
     }
 
 }
