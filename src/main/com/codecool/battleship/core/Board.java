@@ -30,12 +30,26 @@ public class Board {
                 yEnd < ocean.length;
     }
 
-    private boolean isEmpty(int x, int y) {
-        return ocean[x][y].getStatus() == Square.SquareStatus.EMPTY;
+    private boolean isEmpty(int x, int y, Ship.ShipType type, String direction) {
+        if(direction.equals("horizontal")){
+            for (int i = y; i < y+ type.shipSize; i++) {
+                if(!ocean[x][i].getStatus().equals(Square.SquareStatus.EMPTY)){
+                    return false;
+                }
+            }
+        }
+        else{
+            for (int i = x; i < x + type.shipSize; i++) {
+                if(!ocean[i][y].getStatus().equals(Square.SquareStatus.EMPTY)){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
         int size = ship.type.shipSize;
-        return isInsideBoard(x, y, size, direction) && isEmpty(x, y);
+        return isInsideBoard(x, y, size, direction) && isEmpty(x, y, ship.type, direction);
     }
 }

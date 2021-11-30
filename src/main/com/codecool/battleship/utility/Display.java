@@ -1,7 +1,6 @@
 package com.codecool.battleship.utility;
 
 import com.codecool.battleship.core.Board;
-import com.codecool.battleship.core.Square;
 
 public class Display {
     private final static int ASCII_CHARACTER_A = 65;
@@ -15,11 +14,9 @@ public class Display {
     }
 
     public void printMainMenu() {
-        println("""
-                [1]Start new game
-                [2]Start new game with different game mode
-                [3]Exit
-                """);
+        println("[1]Start new game\n" +
+                "[2]Start new game with different game mode\n" +
+                "[3]Exit");
     }
 
     public void printBoard(Board board) {
