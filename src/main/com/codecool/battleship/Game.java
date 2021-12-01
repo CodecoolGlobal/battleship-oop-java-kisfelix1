@@ -19,18 +19,28 @@ public class Game {
     }
 
     private void setup() {
-        player1 = new Player();
-        player2 = new Player();
+        player1 = new Player("Józsi");
+        player2 = new Player("Béla");
+        currentRoundPlayer = player1;
     }
 
     public void gameCycle() {
         while (!checkWin()) {
-            display.printBoard(player1.getBoard());
+            display.printBoard(currentRoundPlayer.getBoard());
             playerShoot();
-            //changeCurrentPlayer();
-
+            changeCurrentPlayer();
         }
     }
+
+    private void changeCurrentPlayer() {
+        if(currentRoundPlayer.getName().equals(player1.getName())){
+            currentRoundPlayer = player2;
+        }
+        else{
+            currentRoundPlayer = player1;
+        }
+    }
+
 
     private void playerShoot() {
         input.askAttackCoordinate(1);

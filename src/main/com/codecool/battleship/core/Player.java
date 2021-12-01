@@ -5,9 +5,15 @@ import java.util.ArrayList;
 public class Player {
     ArrayList<Ship> playerShips = new ArrayList<>();
     private Board board;
+    private String name;
 
-    public Player() {
+    public Player(String name) {
         BoardFactory boardFactory = new BoardFactory(this);
+        this.name = name;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public Board getBoard() {

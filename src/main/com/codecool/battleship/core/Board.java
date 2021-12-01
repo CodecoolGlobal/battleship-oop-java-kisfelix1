@@ -16,7 +16,8 @@ public class Board {
     public Square[][] getOcean() {
         return ocean;
     }
-    public Square getSquare(int x, int y){
+
+    public Square getSquare(int x, int y) {
         return ocean[x][y];
     }
 
@@ -24,7 +25,7 @@ public class Board {
         ocean[x][y] = value;
     }
 
-    private boolean isInsideBoard(int x, int y, int size, String direction) {
+    private boolean isPlacementInsideBoard(int x, int y, int size, String direction) {
         int xEnd = direction.equals("vertical") ? x + size : x;
         int yEnd = direction.equals("horizontal") ? y + size : y;
         return x >= 0 &&
@@ -33,7 +34,7 @@ public class Board {
                 yEnd < ocean.length;
     }
 
-    private boolean isEmpty(int x, int y, ShipType type, String direction) {
+    private boolean isPlacementEmpty(int x, int y, ShipType type, String direction) {
         if (direction.equals("horizontal")) {
             for (int i = y; i < y + type.shipSize; i++) {
                 if (!ocean[x][i].getStatus().equals(SquareStatus.EMPTY)) {
@@ -52,6 +53,6 @@ public class Board {
 
     public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
         int size = ship.getType().shipSize;
-        return isInsideBoard(x, y, size, direction) && isEmpty(x, y, ship.getType(), direction);
+        return isPlacementInsideBoard(x, y, size, direction) && isPlacementEmpty(x, y, ship.getType(), direction);
     }
 }
