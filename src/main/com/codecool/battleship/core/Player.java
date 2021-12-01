@@ -32,4 +32,7 @@ public class Player {
         }
         return false;
     }
+    public void getHit() {
+//        this.board.setOcean();
+    }
 }
