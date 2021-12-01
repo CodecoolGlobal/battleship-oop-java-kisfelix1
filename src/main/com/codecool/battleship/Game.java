@@ -43,7 +43,8 @@ public class Game {
 
 
     private void playerShoot() {
-        input.askAttackCoordinate(1);
+        String validCoordinates = input.askAttackCoordinate(1, player2.getBoard());
+        player2.getHit();
     }
 
     private boolean checkWin() {
