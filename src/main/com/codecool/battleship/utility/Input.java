@@ -1,14 +1,16 @@
 package com.codecool.battleship.utility;
 
 import com.codecool.battleship.core.Board;
+import com.codecool.battleship.core.ShipType;
 
 import java.util.Scanner;
 
 public class Input {
+    private static final int ASCII_VALUE_OF_A = 97;
     Scanner inputScan = new Scanner(System.in);
     Display display = new Display();
 
-    public String askPlacementCoordinate(String shipType) {
+    public String askPlacementCoordinate(ShipType shipType) {
         while (true) {
             display.println("Where do you want to place the " + shipType + " ship?");
             String userInput = inputScan.nextLine();
@@ -16,6 +18,13 @@ public class Input {
                 return userInput;
             }
         }
+    }
+
+    public int[] convertStringToMove(String move) {
+        int[] coordinates = new int[2];
+        coordinates[0] = move.charAt(0) - ASCII_VALUE_OF_A;
+        coordinates[1] = Integer.parseInt(move.substring(1)) - 1;
+        return coordinates;
     }
 
     public String askAttackCoordinate(int player, Board attackedBoard) {

@@ -8,8 +8,8 @@ public class Player {
     private String name;
 
     public Player(String name) {
-        BoardFactory boardFactory = new BoardFactory(this);
         this.name = name;
+        BoardFactory boardFactory = new BoardFactory(this);
     }
 
     public String getName(){
