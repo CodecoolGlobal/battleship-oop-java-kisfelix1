@@ -29,20 +29,7 @@ public class Display {
         for (int i = 0; i < boardSize; i++){
             print((char)(i + ASCII_CHARACTER_A) + "  ");
             for (int j = 0; j < boardSize; j++){
-                switch (board.getOcean()[i][j].getStatus()) {
-                    case SHIP:
-                        print("S  ");
-                        break;
-                    case MISSED:
-                        print("M  ");
-                        break;
-                    case EMPTY:
-                        print(".  ");
-                        break;
-                    case HIT:
-                        print("H  ");
-                        break;
-                }
+                print(board.getOcean()[i][j].getStatus().unicodeCharacter + "  ");
             }
             println("");
         }
