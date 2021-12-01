@@ -6,9 +6,9 @@ public class Board {
 
     public Board(int mapSize) {
         ocean = new Square[mapSize][mapSize];
-        for (int i = 0; i < ocean.length; i++) {
-            for (int j = 0; j < ocean.length; j++) {
-                ocean[i][j] = new Square(i, j);
+        for (int row = 0; row < ocean.length; row++) {
+            for (int column = 0; column < ocean.length; column++) {
+                ocean[row][column] = new Square(row, column);
             }
         }
     }
@@ -21,7 +21,7 @@ public class Board {
         return ocean[x][y];
     }
 
-    public void setOcean(int x, int y, Square value) {
+    public void setOceanSquare(int x, int y, Square value) {
         ocean[x][y] = value;
     }
 
