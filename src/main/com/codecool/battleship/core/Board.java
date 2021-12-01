@@ -6,9 +6,9 @@ public class Board {
 
     public Board(int mapSize) {
         ocean = new Square[mapSize][mapSize];
-        for (int i = 0; i < ocean.length; i++) {
-            for (int j = 0; j < ocean.length; j++) {
-                ocean[i][j] = new Square(i, j);
+        for (int row = 0; row < ocean.length; row++) {
+            for (int column = 0; column < ocean.length; column++) {
+                ocean[row][column] = new Square(row, column);
             }
         }
     }
@@ -17,11 +17,15 @@ public class Board {
         return ocean;
     }
 
-    public void setOcean(int x, int y, Square value) {
+    public Square getSquare(int x, int y) {
+        return ocean[x][y];
+    }
+
+    public void setOceanSquare(int x, int y, Square value) {
         ocean[x][y] = value;
     }
 
-    private boolean isInsideBoard(int x, int y, int size, String direction) {
+    private boolean isPlacementInsideBoard(int x, int y, int size, String direction) {
         int xEnd = direction.equals("vertical") ? x + size : x;
         int yEnd = direction.equals("horizontal") ? y + size : y;
         return x >= 0 &&
@@ -30,12 +34,25 @@ public class Board {
                 yEnd < ocean.length;
     }
 
-    private boolean isEmpty(int x, int y) {
-        return ocean[x][y].getStatus() == Square.SquareStatus.EMPTY;
+    private boolean isPlacementEmpty(int x, int y, ShipType type, String direction) {
+        if (direction.equals("horizontal")) {
+            for (int i = y; i < y + type.shipSize; i++) {
+                if (!ocean[x][i].getStatus().equals(SquareStatus.EMPTY)) {
+                    return false;
+                }
+            }
+        } else {
+            for (int i = x; i < x + type.shipSize; i++) {
+                if (!ocean[i][y].getStatus().equals(SquareStatus.EMPTY)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public boolean isPlacementOk(int x, int y, Ship ship, String direction) {
-        int size = ship.type.shipSize;
-        return isInsideBoard(x, y, size, direction) && isEmpty(x, y);
+        int size = ship.getType().shipSize;
+        return isPlacementInsideBoard(x, y, size, direction) && isPlacementEmpty(x, y, ship.getType(), direction);
     }
 }

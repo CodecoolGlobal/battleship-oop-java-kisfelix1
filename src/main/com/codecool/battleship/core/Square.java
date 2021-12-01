@@ -2,13 +2,6 @@ package com.codecool.battleship.core;
 
 public class Square {
 
-    public enum SquareStatus {
-        EMPTY, SHIP, HIT, MISSED
-        /*public GetCharacter(){
-            //unicode representation
-        }*/
-    }
-
     private final int x;
     private final int y;
     private SquareStatus status;
@@ -22,11 +15,12 @@ public class Square {
     public SquareStatus getStatus() {
         return status;
     }
+
     public void setStatus(SquareStatus status) {
         this.status = status;
     }
 
-    @java.lang.Override
+    @Override
     public java.lang.String toString() {
         return status.toString();
     }

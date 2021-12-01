@@ -12,29 +12,38 @@ public class Game {
 
     private Player player1;
     private Player player2;
+    private Player currentRoundPlayer;
 
     public Game() {
         setup();
-        gameCycle();
     }
 
     private void setup() {
-        player1 = new Player();
-        System.out.println("aaa");
-        player2 = new Player();
+        player1 = new Player("Józsi");
+        player2 = new Player("Béla");
+        currentRoundPlayer = player1;
     }
 
-    private void gameCycle() {
+    public void gameCycle() {
         while (!checkWin()) {
-            //display.printBoard(10);
+            display.printBoard(currentRoundPlayer.getBoard());
             playerShoot();
-            //changeCurrentPlayer();
-
+            changeCurrentPlayer();
         }
     }
 
+    private void changeCurrentPlayer() {
+        if (currentRoundPlayer.getName().equals(player1.getName())) {
+            currentRoundPlayer = player2;
+        } else {
+            currentRoundPlayer = player1;
+        }
+    }
+
+
     private void playerShoot() {
-        input.askAttackCoordinate(1);
+        String validCoordinates = input.askAttackCoordinate(1, player2.getBoard());
+        player2.getHit();
     }
 
     private boolean checkWin() {

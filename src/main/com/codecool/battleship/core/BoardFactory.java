@@ -11,45 +11,48 @@ public class BoardFactory {
     public BoardFactory(Player player) {
         board = new Board(MAP_SIZE);
         this.player = player;
-        this.player.board = board;
+        this.player.setBoard(board);
         randomPlacement();
-        player = this.player;
     }
 
     public void randomPlacement() {
-        for (Ship.ShipType type : Ship.ShipType.values()) {
-            tryPlaceShip(type);
+        for (ShipType type : ShipType.values()) {
+            tryRandomPlaceShip(type, "horizontal");
         }
     }
 
-    private void tryPlaceShip(Ship.ShipType type) {
+    private void tryRandomPlaceShip(ShipType type, String direction) {
         int x = rand.nextInt(board.getOcean().length - type.shipSize);
         int y = rand.nextInt(board.getOcean().length - type.shipSize);
         Ship ship = new Ship(type);
-        if (board.isPlacementOk(x, y, ship, "horizontal")) {
-            placeShip(x, y, ship, "horizontal");
-        } else {
-            tryPlaceShip(type);
+        if (board.isPlacementOk(x, y, ship, direction)) {
+            placeShip(x, y, ship, direction);
+        }
+        else{
+            tryRandomPlaceShip(type, direction);
         }
     }
 
-    private void placeShip(int x, int y, Ship ship, String direction) {
+    private void placeShip(int fromXCoordinate, int fromYCoordinate, Ship ship, String direction) {
+        int shipSize = ship.getType().shipSize;
         if (direction.equals("horizontal")) {
-            for (int i = x; i < x + ship.type.shipSize; i++) {
-                ship.addPosition(board.getOcean()[i][y]);
-                board.getOcean()[i][y].setStatus(Square.SquareStatus.SHIP);
+            int toYCoordinate = fromYCoordinate + shipSize;
+            for (int column = fromYCoordinate; column < toYCoordinate; column++) {
+                Square targetSquare = board.getSquare(fromXCoordinate, column);
+                ship.addPosition(targetSquare);
             }
         }
         else {
-            for (int i = y; i < y + ship.type.shipSize; i++) {
-                ship.addPosition(board.getOcean()[x][i]);
-                board.getOcean()[x][i].setStatus(Square.SquareStatus.SHIP);
+            int toXCoordinate = fromXCoordinate + shipSize;
+            for (int row = fromXCoordinate; row < toXCoordinate; row++) {
+                Square targetSquare = board.getSquare(row, fromYCoordinate);
+                ship.addPosition(targetSquare);
             }
         }
         player.addShip(ship);
     }
 
-    public void manualPlacement(Ship.ShipType type) {
+    public void manualPlacement(ShipType type) {
 
     }
 }

@@ -1,5 +1,7 @@
 package com.codecool.battleship.utility;
 
+import com.codecool.battleship.core.Board;
+
 public class Display {
     private final static int ASCII_CHARACTER_A = 65;
 
@@ -12,43 +14,25 @@ public class Display {
     }
 
     public void printMainMenu() {
-        println("[1]Start new game" +
-                "[2]Start new game with different game mode" +
+        println("[1]Start new game\n" +
+                "[2]Start new game with different game mode\n" +
                 "[3]Exit");
     }
 
-    public void printBoard(int boardSize) {
-        String finalBoard = "";
-        String boardCordNumbers = "";
-        String boardTopBottom = "";
-        for (int row = 0; row < boardSize + 1; row++) {   //Generates the top and bottom part of the board, according to
-            if (row == 0) {                             //the board size
-                boardCordNumbers += "    ";
-                boardTopBottom += "  - ";
-            }
-            if (row == boardSize) {
-                boardCordNumbers += " \n";
-                boardTopBottom += "- \n";
-            } else {
-                boardCordNumbers += (row + 1) + " ";
-                boardTopBottom += "- ";
-            }
+    public void printBoard(Board board) {
+        int boardSize = board.getOcean().length;
+        print("  ");
+        for (int i = 1; i <= boardSize; i++){
+            print(i + "  ");
         }
-        finalBoard += boardCordNumbers + boardTopBottom;
-        for (int row = 0; row < boardSize; row++) {
-            for (int col = 0; col < boardSize; col++) {
-                if (col == 0) {
-                    finalBoard += row == 0 ? (char) (ASCII_CHARACTER_A + row) + " | " : "|\n" + (char) (ASCII_CHARACTER_A + row) + " | ";
-                }
-                finalBoard += ". ";
-                if (row == boardSize - 1 && col == boardSize - 1) {
-                    finalBoard += "|";
-                }
-                // NEED BOARD(OCEAN)
+        println("");
+        for (int i = 0; i < boardSize; i++){
+            print((char)(i + ASCII_CHARACTER_A) + "  ");
+            for (int j = 0; j < boardSize; j++){
+                print(board.getOcean()[i][j].getStatus().unicodeCharacter + "  ");
             }
+            println("");
         }
-        finalBoard += "\n" + boardTopBottom;
-        System.out.println(finalBoard);
     }
 
     public void printWinner(int player) {

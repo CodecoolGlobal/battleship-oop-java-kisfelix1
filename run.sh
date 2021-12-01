@@ -1,5 +1,5 @@
 #!/bin/sh
 
 find -name *.java | xargs javac
-java -classpath src/main/java com.codecool.battleship.Battleship
+java -classpath src/main/ com.codecool.battleship.Battleship
 
