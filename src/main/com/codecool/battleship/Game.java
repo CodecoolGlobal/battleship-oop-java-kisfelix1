@@ -33,10 +33,9 @@ public class Game {
     }
 
     private void changeCurrentPlayer() {
-        if(currentRoundPlayer.getName().equals(player1.getName())){
+        if (currentRoundPlayer.getName().equals(player1.getName())) {
             currentRoundPlayer = player2;
-        }
-        else{
+        } else {
             currentRoundPlayer = player1;
         }
     }

@@ -16,7 +16,7 @@ public class Battleship {
     }
 
     private static void startMenuOption(String choice) {
-        switch(choice){
+        switch (choice) {
             case "1":
                 Game game = new Game();
                 game.gameCycle();
