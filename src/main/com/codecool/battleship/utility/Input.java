@@ -18,7 +18,7 @@ public class Input {
         }
     }
 
-    public String askAttackCoordinate(int player, Board attackedBoard) {
+    public String askAttackCoordinate(String player, Board attackedBoard) {
         display.println("Player " + player + ", input an attack coordinate!");
         String userInput = inputScan.nextLine();
         while (!isValidCoordinateForm(userInput) && !isInsideBoard(userInput, attackedBoard)) {

@@ -38,7 +38,7 @@ public class Player {
         }
         return false;
     }
-    public void getHit() {
-//        this.board.setOcean();
-    }
+//    public void getHit() {
+//        this.board.setOceanSquare();
+//    }
 }
