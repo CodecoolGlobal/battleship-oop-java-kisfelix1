@@ -6,7 +6,7 @@ import com.codecool.battleship.core.ShipType;
 import java.util.Scanner;
 
 public class Input {
-    private static final int ASCII_VALUE_OF_A = 97;
+    private static final int ASCII_VALUE_OF_A = 65;
     Scanner inputScan = new Scanner(System.in);
     Display display = new Display();
 
@@ -21,6 +21,7 @@ public class Input {
     }
 
     public int[] convertStringToMove(String move) {
+        move = reorderPlayerInputs(move);
         int[] coordinates = new int[2];
         coordinates[0] = move.charAt(0) - ASCII_VALUE_OF_A;
         coordinates[1] = Integer.parseInt(move.substring(1)) - 1;

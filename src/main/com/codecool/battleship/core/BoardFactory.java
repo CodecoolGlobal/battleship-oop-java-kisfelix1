@@ -1,5 +1,6 @@
 package com.codecool.battleship.core;
 
+import com.codecool.battleship.utility.Display;
 import com.codecool.battleship.utility.Input;
 
 import java.util.Random;
@@ -37,6 +38,8 @@ public class BoardFactory {
 
     private void tryManualPlacement(ShipType type) {
         String direction = "horizontal";
+        Display display = new Display();
+        display.printBoard(board);
         Input input = new Input();
         String move = input.askPlacementCoordinate(type);
         int[] shipCoordinates = input.convertStringToMove(move);
