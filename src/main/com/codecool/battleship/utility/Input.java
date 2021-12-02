@@ -39,8 +39,6 @@ public class Input {
             display.println("Please try again!");
             userInput = inputScan.nextLine();
         }
-        System.out.println(!isValidCoordinateForm(userInput));
-        System.out.println(!isInsideBoard(userInput, attackedBoard));
         return convertStringToMove(userInput);
     }
 
