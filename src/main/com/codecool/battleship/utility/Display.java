@@ -21,8 +21,11 @@ public class Display {
     }
 
     public void printBoard(Board board, boolean isPlacementPhase) {
+        for (int i = 0; i < 10; i++) {
+            print("\n");
+        }
         int boardSize = board.getOcean().length;
-        print("  ");
+        print("   ");
         for (int i = 1; i <= boardSize; i++) {
             print(i + "  ");
         }
