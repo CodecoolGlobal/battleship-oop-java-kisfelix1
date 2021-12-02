@@ -1,5 +1,6 @@
 package com.codecool.battleship;
 
+import com.codecool.battleship.core.ComputerPlayer;
 import com.codecool.battleship.core.HumanPlayer;
 import com.codecool.battleship.core.Player;
 import com.codecool.battleship.utility.*;
@@ -15,13 +16,13 @@ public class Game {
     private Player player2;
     private Player currentRoundPlayer;
 
-    public Game() {
-        setup();
+    public Game(String mode) {
+        setup(mode);
     }
 
-    private void setup() {
+    private void setup(String mode) {
         player1 = new HumanPlayer("Józsi");
-        player2 = new HumanPlayer("Béla");
+        player2 =  mode.equals("1")? new HumanPlayer("Béla") : new ComputerPlayer("AI");
         currentRoundPlayer = player1;
     }
 
