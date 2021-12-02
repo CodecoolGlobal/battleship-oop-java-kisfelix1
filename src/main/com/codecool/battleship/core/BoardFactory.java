@@ -21,17 +21,21 @@ public class BoardFactory {
     }
 
     private void placeShips(Player player) {
-        if (player.getName().equals("AI")) {
+        if (player.getClass().getSimpleName().equals("ComputerPlayer")) {
             randomPlacement();
         } else {
             String placementChoice = input.askUserInput("Choose placement method:\n[1] - manual\n[2] - random");
-            if (placementChoice.equals("1")) {
-                manualPlacement();
-            } else if (placementChoice.equals("2")) {
-                randomPlacement();
-            } else {
-                placeShips(player);
-            }
+            playerPlacement(player, placementChoice);
+        }
+    }
+
+    private void playerPlacement(Player player, String placementChoice) {
+        if (placementChoice.equals("1")) {
+            manualPlacement();
+        } else if (placementChoice.equals("2")) {
+            randomPlacement();
+        } else {
+            placeShips(player);
         }
     }
 
@@ -60,9 +64,9 @@ public class BoardFactory {
     }
 
     private void tryManualPlacement(ShipType type) {
-        int[] shipCoordinates = null;
-        Ship ship = null;
-        String direction = null;
+        int[] shipCoordinates;
+        Ship ship;
+        String direction;
         do {
             display.printBoard(board, true);
             direction = getPlacementDirection();
@@ -74,10 +78,10 @@ public class BoardFactory {
     }
 
     private void tryRandomPlacement(ShipType type) {
-        int directionRandom = 0;
-        String direction = null;
-        int x = 0;
-        int y = 0;
+        int directionRandom;
+        String direction;
+        int x;
+        int y;
         Ship ship;
         do {
             directionRandom = rand.nextInt(2);

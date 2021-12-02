@@ -13,7 +13,6 @@ public class HumanPlayer extends Player {
         super(name);
     }
 
-
     @Override
     public void shoot(Player otherPlayer) {
         display.printBoard(otherPlayer.getBoard(), false);

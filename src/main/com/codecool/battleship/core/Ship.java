@@ -3,9 +3,9 @@ package com.codecool.battleship.core;
 import java.util.ArrayList;
 
 public class Ship {
-    private ArrayList<Square> shipPositions = new ArrayList<>();
+    private final ArrayList<Square> shipPositions = new ArrayList<>();
 
-    private ShipType type;
+    private final ShipType type;
 
 
     public Ship(ShipType type) {

@@ -8,7 +8,6 @@ import com.codecool.battleship.utility.*;
 
 public class Game {
     private static final Display display = new Display();
-    private static final Input input = new Input();
 
     private Player player1;
     private Player player2;

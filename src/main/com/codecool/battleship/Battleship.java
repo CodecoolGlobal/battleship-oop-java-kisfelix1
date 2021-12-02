@@ -16,7 +16,7 @@ public class Battleship {
     }
 
     private static void startMenuOption(String choice) {
-        if(choice.equals("3")){
+        if (choice.equals("3")) {
             System.exit(0);
         }
         Game game = new Game(choice);

@@ -33,7 +33,7 @@ public class Input {
         String userInput = inputScan.nextLine();
         while (!isValidCoordinateForm(userInput) || !isInsideBoard(userInput, attackedBoard)) {
             if (userInput.equalsIgnoreCase("NUKE")) {
-                return new int[] {00000000};
+                return new int[]{00000000};
             }
             display.print(!isValidCoordinateForm(userInput) ? "Invalid coordinate. " : "Coordinate out of bound. ");
             display.println("Please try again!");
@@ -63,7 +63,7 @@ public class Input {
         }
         String reorderedInput = reorderPlayerInputs(userInput);
         char[] inputCharArray = reorderedInput.toCharArray();
-        int firstCoordinate = (int)inputCharArray[0] - upperAAscii;
+        int firstCoordinate = (int) inputCharArray[0] - upperAAscii;
         int secondCoordinate = (userInput.length() == 2 ?
                 Integer.parseInt(String.valueOf(inputCharArray[1])) :
                 Integer.parseInt(String.valueOf(inputCharArray[1])) + Integer.parseInt(String.valueOf(inputCharArray[2]))) - 1;
