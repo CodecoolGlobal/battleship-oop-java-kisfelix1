@@ -31,9 +31,12 @@ public class Input {
     public int[] askAttackCoordinate(String player, Board attackedBoard) {
         display.println("Player " + player + ", input an attack coordinate!");
         String userInput = inputScan.nextLine();
-        while (!isValidCoordinateForm(userInput) && !isInsideBoard(userInput, attackedBoard)) {
-            display.println(isValidCoordinateForm(userInput) ? "Invalid coordinate. " : "Coordinate out of bound. ");
-            display.print("Please try again!");
+        while (!isValidCoordinateForm(userInput) || !isInsideBoard(userInput, attackedBoard)) {
+            if (userInput.equalsIgnoreCase("NUKE")) {
+                return new int[] {00000000};
+            }
+            display.print(!isValidCoordinateForm(userInput) ? "Invalid coordinate. " : "Coordinate out of bound. ");
+            display.println("Please try again!");
             userInput = inputScan.nextLine();
         }
         return convertStringToMove(userInput);
@@ -55,10 +58,13 @@ public class Input {
 
     public boolean isInsideBoard(String userInput, Board attackedBoard) {
         int upperAAscii = 65;
+        if (userInput.length() <= 1) {
+            return false;
+        }
         String reorderedInput = reorderPlayerInputs(userInput);
         char[] inputCharArray = reorderedInput.toCharArray();
-        int firstCoordinate = (int) inputCharArray[0] - upperAAscii;
-        int secondCoordinate = (userInput.length() == 2 ? inputCharArray[1] : inputCharArray[1] + inputCharArray[2]) - 1;
+        int firstCoordinate = (int)inputCharArray[0] - upperAAscii;
+        int secondCoordinate = (userInput.length() == 2 ? (int)inputCharArray[1] : (int)inputCharArray[1] + (int)inputCharArray[2]) - 1;
         return firstCoordinate >= 0 &&
                 firstCoordinate < attackedBoard.getOcean().length &&
                 secondCoordinate >= 0 &&

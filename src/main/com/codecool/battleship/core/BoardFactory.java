@@ -62,7 +62,7 @@ public class BoardFactory {
     }
 
     private void tryManualPlacement(ShipType type) {
-        display.printBoard(board);
+        display.printBoard(board, true);
         String direction = getPlacementDirection();
         String placement = input.askPlacementCoordinate(type);
         int[] shipCoordinates = input.convertStringToMove(placement);

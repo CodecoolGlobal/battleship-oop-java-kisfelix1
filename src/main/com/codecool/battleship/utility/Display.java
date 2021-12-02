@@ -1,6 +1,7 @@
 package com.codecool.battleship.utility;
 
 import com.codecool.battleship.core.Board;
+import com.codecool.battleship.core.SquareStatus;
 
 public class Display {
     private final static int ASCII_CHARACTER_A = 65;
@@ -19,7 +20,7 @@ public class Display {
                 "[3]Exit");
     }
 
-    public void printBoard(Board board) {
+    public void printBoard(Board board, boolean isPlacementPhase) {
         int boardSize = board.getOcean().length;
         print("  ");
         for (int i = 1; i <= boardSize; i++){
@@ -29,13 +30,20 @@ public class Display {
         for (int i = 0; i < boardSize; i++){
             print((char)(i + ASCII_CHARACTER_A) + "  ");
             for (int j = 0; j < boardSize; j++){
-                print(board.getOcean()[i][j].getStatus().unicodeCharacter + "  ");
+                if (!isPlacementPhase) {
+                    print(board.getOcean()[i][j].getStatus() == SquareStatus.SHIP ?
+                            SquareStatus.EMPTY.unicodeCharacter + "  " :
+                            board.getOcean()[i][j].getStatus().unicodeCharacter + "  ");
+                } else {
+                    print(board.getOcean()[i][j].getStatus().unicodeCharacter + "  ");
+                }
+
             }
             println("");
         }
     }
 
-    public void printWinner(int player) {
-        println("Player " + player + " has won the game!");
+    public void printWinner(String player) {
+        println(player + " has won the game!");
     }
 }
