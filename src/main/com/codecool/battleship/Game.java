@@ -3,6 +3,8 @@ package com.codecool.battleship;
 import com.codecool.battleship.core.Player;
 import com.codecool.battleship.utility.*;
 
+import java.util.Arrays;
+
 
 public class Game {
     private static final Display display = new Display();
@@ -50,9 +52,7 @@ public class Game {
 
     private void playerShoot() {
         int[] validCoordinates = input.askAttackCoordinate(currentRoundPlayer.getName(), getOtherPlayer().getBoard());
-        System.out.println(validCoordinates);
-        if (validCoordinates[0] == 00000000) {
-            System.out.println("asd");
+        if (Arrays.equals(validCoordinates, new int[]{00000000})) {
             initiateNukeCheat();
         } else {
             getOtherPlayer().getHit(validCoordinates[0], validCoordinates[1]);

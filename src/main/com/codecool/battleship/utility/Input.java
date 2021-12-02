@@ -64,7 +64,9 @@ public class Input {
         String reorderedInput = reorderPlayerInputs(userInput);
         char[] inputCharArray = reorderedInput.toCharArray();
         int firstCoordinate = (int)inputCharArray[0] - upperAAscii;
-        int secondCoordinate = (userInput.length() == 2 ? (int)inputCharArray[1] : (int)inputCharArray[1] + (int)inputCharArray[2]) - 1;
+        int secondCoordinate = (userInput.length() == 2 ?
+                Integer.parseInt(String.valueOf(inputCharArray[1])) :
+                Integer.parseInt(String.valueOf(inputCharArray[1])) + Integer.parseInt(String.valueOf(inputCharArray[2]))) - 1;
         return firstCoordinate >= 0 &&
                 firstCoordinate < attackedBoard.getOcean().length &&
                 secondCoordinate >= 0 &&
