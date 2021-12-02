@@ -39,6 +39,8 @@ public class Input {
             display.println("Please try again!");
             userInput = inputScan.nextLine();
         }
+        System.out.println(!isValidCoordinateForm(userInput));
+        System.out.println(!isInsideBoard(userInput, attackedBoard));
         return convertStringToMove(userInput);
     }
 
@@ -66,7 +68,7 @@ public class Input {
         int firstCoordinate = (int)inputCharArray[0] - upperAAscii;
         int secondCoordinate = (userInput.length() == 2 ?
                 Integer.parseInt(String.valueOf(inputCharArray[1])) :
-                Integer.parseInt(String.valueOf(inputCharArray[1])) + Integer.parseInt(String.valueOf(inputCharArray[2]))) - 1;
+                Integer.parseInt(String.valueOf(inputCharArray[1]) + String.valueOf(inputCharArray[2]))) - 1;
         return firstCoordinate >= 0 &&
                 firstCoordinate < attackedBoard.getOcean().length &&
                 secondCoordinate >= 0 &&
