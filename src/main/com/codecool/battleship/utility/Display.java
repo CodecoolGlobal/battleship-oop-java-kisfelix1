@@ -16,20 +16,20 @@ public class Display {
 
     public void printMainMenu() {
         println("[1]Start new game\n" +
-                "[2]Start new game with different game mode\n" +
+                "[2]Start new game vs AI\n" +
                 "[3]Exit");
     }
 
     public void printBoard(Board board, boolean isPlacementPhase) {
         int boardSize = board.getOcean().length;
         print("  ");
-        for (int i = 1; i <= boardSize; i++){
+        for (int i = 1; i <= boardSize; i++) {
             print(i + "  ");
         }
         println("");
-        for (int i = 0; i < boardSize; i++){
-            print((char)(i + ASCII_CHARACTER_A) + "  ");
-            for (int j = 0; j < boardSize; j++){
+        for (int i = 0; i < boardSize; i++) {
+            print((char) (i + ASCII_CHARACTER_A) + "  ");
+            for (int j = 0; j < boardSize; j++) {
                 if (!isPlacementPhase) {
                     print(board.getOcean()[i][j].getStatus() == SquareStatus.SHIP ?
                             SquareStatus.EMPTY.unicodeCharacter + "  " :

@@ -16,17 +16,10 @@ public class Battleship {
     }
 
     private static void startMenuOption(String choice) {
-        switch (choice) {
-            case "1":
-                Game game = new Game();
-                game.gameCycle();
-                break;
-            case "2":
-                System.out.println("Other option");
-                break;
-            case "3":
-                System.exit(0);
-                break;
+        if (choice.equals("3")) {
+            System.exit(0);
         }
+        Game game = new Game(choice);
+        game.gameCycle();
     }
 }

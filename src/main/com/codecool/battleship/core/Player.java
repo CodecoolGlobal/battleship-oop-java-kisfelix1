@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 import static com.codecool.battleship.core.SquareStatus.HIT;
 
-public class Player {
-    ArrayList<Ship> playerShips = new ArrayList<>();
-    private Board board;
-    private String name;
+public abstract class Player {
+    protected ArrayList<Ship> playerShips = new ArrayList<>();
+    protected Board board;
+    protected String name;
 
     public Player(String name) {
         this.name = name;
@@ -40,7 +40,10 @@ public class Player {
         }
         return false;
     }
+
     public void getHit(int x, int y) {
         this.board.setSquareStatusHit(x, y);
     }
+
+    public abstract void shoot(Player player);
 }
