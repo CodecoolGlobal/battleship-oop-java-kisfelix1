@@ -42,7 +42,6 @@ public class Game {
 
     private Player getOtherPlayer() {
         if (currentRoundPlayer.getName().equals(player1.getName())) {
-            System.out.println("kek");
             return player2;
         } else {
             return player1;
@@ -52,7 +51,6 @@ public class Game {
 
     private void playerShoot() {
         int[] validCoordinates = input.askAttackCoordinate(currentRoundPlayer.getName(), getOtherPlayer().getBoard());
-        System.out.println(currentRoundPlayer.getName());
         getOtherPlayer().getHit(validCoordinates[0], validCoordinates[1]);
         }
 
