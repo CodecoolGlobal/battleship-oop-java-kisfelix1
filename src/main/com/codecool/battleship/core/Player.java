@@ -2,14 +2,16 @@ package com.codecool.battleship.core;
 
 import java.util.ArrayList;
 
+import static com.codecool.battleship.core.SquareStatus.HIT;
+
 public class Player {
     ArrayList<Ship> playerShips = new ArrayList<>();
     private Board board;
     private String name;
 
     public Player(String name) {
-        BoardFactory boardFactory = new BoardFactory(this);
         this.name = name;
+        BoardFactory boardFactory = new BoardFactory(this);
     }
 
     public String getName(){
@@ -38,7 +40,7 @@ public class Player {
         }
         return false;
     }
-    public void getHit() {
-//        this.board.setOcean();
+    public void getHit(int x, int y) {
+        this.board.setSquareStatusHit(x, y);
     }
 }

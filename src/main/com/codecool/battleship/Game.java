@@ -26,7 +26,7 @@ public class Game {
 
     public void gameCycle() {
         while (!checkWin()) {
-            display.printBoard(currentRoundPlayer.getBoard());
+            display.printBoard(getOtherPlayer().getBoard());
             playerShoot();
             changeCurrentPlayer();
         }
@@ -40,11 +40,19 @@ public class Game {
         }
     }
 
+    private Player getOtherPlayer() {
+        if (currentRoundPlayer.getName().equals(player1.getName())) {
+            return player2;
+        } else {
+            return player1;
+        }
+    }
+
 
     private void playerShoot() {
-        String validCoordinates = input.askAttackCoordinate(1, player2.getBoard());
-        player2.getHit();
-    }
+        int[] validCoordinates = input.askAttackCoordinate(currentRoundPlayer.getName(), getOtherPlayer().getBoard());
+        getOtherPlayer().getHit(validCoordinates[0], validCoordinates[1]);
+        }
 
     private boolean checkWin() {
         return false;
