@@ -66,6 +66,10 @@ public class BoardFactory {
         String direction = getPlacementDirection();
         String placement = input.askPlacementCoordinate(type);
         int[] shipCoordinates = input.convertStringToMove(placement);
+        forcePlacement(type, direction, shipCoordinates);
+    }
+
+    private void forcePlacement(ShipType type, String direction, int[] shipCoordinates) {
         Ship ship = new Ship(type);
         if (board.isPlacementOk(shipCoordinates[0], shipCoordinates[1], ship, direction)) {
             placeShip(shipCoordinates[0], shipCoordinates[1], ship, direction);
