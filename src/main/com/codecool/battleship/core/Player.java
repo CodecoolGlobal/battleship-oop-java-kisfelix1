@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import static com.codecool.battleship.core.SquareStatus.HIT;
 
-public class Player {
-    ArrayList<Ship> playerShips = new ArrayList<>();
+public abstract class Player {
+    private ArrayList<Ship> playerShips = new ArrayList<>();
     private Board board;
     private String name;
 

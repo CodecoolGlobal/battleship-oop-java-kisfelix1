@@ -1,5 +1,6 @@
 package com.codecool.battleship;
 
+import com.codecool.battleship.core.HumanPlayer;
 import com.codecool.battleship.core.Player;
 import com.codecool.battleship.utility.*;
 
@@ -19,8 +20,8 @@ public class Game {
     }
 
     private void setup() {
-        player1 = new Player("Józsi");
-        player2 = new Player("Béla");
+        player1 = new HumanPlayer("Józsi");
+        player2 = new HumanPlayer("Béla");
         currentRoundPlayer = player1;
     }
 
