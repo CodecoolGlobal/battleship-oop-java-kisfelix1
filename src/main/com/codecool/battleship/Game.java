@@ -25,11 +25,12 @@ public class Game {
     }
 
     public void gameCycle() {
-        while (!checkWin()) {
+        while (checkWin()) {
             display.printBoard(getOtherPlayer().getBoard(), false);
             playerShoot();
             changeCurrentPlayer();
         }
+        display.printWinner(player1.isAlive() ? player2.getName() : player1.getName());
     }
 
     private void changeCurrentPlayer() {
@@ -55,8 +56,9 @@ public class Game {
         }
 
     private boolean checkWin() {
-        return false;
+        return player1.isAlive() && player2.isAlive();
     }
+//    private void initiateNukeCheat()
 
 
 }

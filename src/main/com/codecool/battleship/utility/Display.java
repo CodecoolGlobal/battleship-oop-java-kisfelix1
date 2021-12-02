@@ -43,7 +43,7 @@ public class Display {
         }
     }
 
-    public void printWinner(int player) {
-        println("Player " + player + " has won the game!");
+    public void printWinner(String player) {
+        println(player + " has won the game!");
     }
 }
