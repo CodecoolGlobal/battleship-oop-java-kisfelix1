@@ -24,6 +24,9 @@ public class Board {
     public void setOceanSquare(int x, int y, Square value) {
         ocean[x][y] = value;
     }
+    public void setSquareStatusHit(int x, int y) {
+        ocean[x][y].setStatus(ocean[x][y].getStatus() == SquareStatus.SHIP ? SquareStatus.HIT : SquareStatus.MISSED);
+    }
 
     private boolean isPlacementInsideBoard(int x, int y, int size, String direction) {
         int xEnd = direction.equals("vertical") ? x + size : x;

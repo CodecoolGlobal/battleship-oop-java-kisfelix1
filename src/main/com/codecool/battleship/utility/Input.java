@@ -28,7 +28,7 @@ public class Input {
         return coordinates;
     }
 
-    public String askAttackCoordinate(String player, Board attackedBoard) {
+    public int[] askAttackCoordinate(String player, Board attackedBoard) {
         display.println("Player " + player + ", input an attack coordinate!");
         String userInput = inputScan.nextLine();
         while (!isValidCoordinateForm(userInput) && !isInsideBoard(userInput, attackedBoard)) {
@@ -36,7 +36,7 @@ public class Input {
             display.print("Please try again!");
             userInput = inputScan.nextLine();
         }
-        return userInput;
+        return convertStringToMove(userInput);
     }
 
     public boolean isValidCoordinateForm(String userInput) {

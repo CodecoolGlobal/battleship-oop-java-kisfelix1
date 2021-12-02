@@ -2,6 +2,8 @@ package com.codecool.battleship.core;
 
 import java.util.ArrayList;
 
+import static com.codecool.battleship.core.SquareStatus.HIT;
+
 public class Player {
     ArrayList<Ship> playerShips = new ArrayList<>();
     private Board board;
@@ -38,7 +40,7 @@ public class Player {
         }
         return false;
     }
-//    public void getHit() {
-//        this.board.setOceanSquare();
-//    }
+    public void getHit(int x, int y) {
+        this.board.setSquareStatusHit(x, y);
+    }
 }
