@@ -6,10 +6,11 @@ import com.codecool.battleship.utility.Input;
 import java.util.Random;
 
 public class BoardFactory {
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
+    private static final Input input = new Input();
     private static final int MAP_SIZE = 10;
-    private Board board;
-    private Player player;
+    private final Board board;
+    private final Player player;
 
     public BoardFactory(Player player) {
         board = new Board(MAP_SIZE);
@@ -37,10 +38,9 @@ public class BoardFactory {
     }
 
     private void tryManualPlacement(ShipType type) {
-        String direction = "horizontal";
+        String direction = getPlacementDirection();
         Display display = new Display();
         display.printBoard(board);
-        Input input = new Input();
         String move = input.askPlacementCoordinate(type);
         int[] shipCoordinates = input.convertStringToMove(move);
         Ship ship = new Ship(type);
@@ -50,6 +50,10 @@ public class BoardFactory {
         else{
             tryManualPlacement(type);
         }
+    }
+
+    private String getPlacementDirection() {
+        return "";
     }
 
     private void tryRandomPlaceShip(ShipType type, String direction) {
