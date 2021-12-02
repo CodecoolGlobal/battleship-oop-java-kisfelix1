@@ -5,8 +5,6 @@ import com.codecool.battleship.core.HumanPlayer;
 import com.codecool.battleship.core.Player;
 import com.codecool.battleship.utility.*;
 
-import java.util.Arrays;
-
 
 public class Game {
     private static final Display display = new Display();
@@ -22,7 +20,7 @@ public class Game {
 
     private void setup(String mode) {
         player1 = new HumanPlayer("Józsi");
-        player2 =  mode.equals("1")? new HumanPlayer("Béla") : new ComputerPlayer("AI");
+        player2 = mode.equals("1") ? new HumanPlayer("Béla") : new ComputerPlayer("AI");
         currentRoundPlayer = player1;
     }
 

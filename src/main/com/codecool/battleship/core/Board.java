@@ -22,12 +22,18 @@ public class Board {
     }
 
     public void setSquareStatusHit(int x, int y) {
-        ocean[x][y].setStatus(ocean[x][y].getStatus() == SquareStatus.SHIP ? SquareStatus.HIT : SquareStatus.MISSED);
+        ocean[x][y].setStatus(ocean[x][y].getStatus() == SquareStatus.SHIP
+                ? SquareStatus.HIT
+                : SquareStatus.MISSED);
     }
 
     private boolean isPlacementInsideBoard(int x, int y, int size, String direction) {
-        int xEnd = direction.equals("vertical") ? x + size : x;
-        int yEnd = direction.equals("horizontal") ? y + size : y;
+        int xEnd = direction.equals("vertical")
+                ? x + size
+                : x;
+        int yEnd = direction.equals("horizontal")
+                ? y + size
+                : y;
         return x >= 0 &&
                 y >= 0 &&
                 xEnd < ocean.length &&
@@ -36,14 +42,16 @@ public class Board {
 
     private boolean isPlacementEmpty(int x, int y, ShipType type, String direction) {
         if (direction.equals("horizontal")) {
-            for (int i = y; i < y + type.shipSize; i++) {
-                if (!ocean[x][i].getStatus().equals(SquareStatus.EMPTY)) {
+            int targetYCoordinate = y + type.shipSize;
+            for (int iteratingCoordinate = y; iteratingCoordinate < targetYCoordinate; iteratingCoordinate++) {
+                if (!ocean[x][iteratingCoordinate].getStatus().equals(SquareStatus.EMPTY)) {
                     return false;
                 }
             }
         } else {
-            for (int i = x; i < x + type.shipSize; i++) {
-                if (!ocean[i][y].getStatus().equals(SquareStatus.EMPTY)) {
+            int targetXCoordinate = x + type.shipSize;
+            for (int changingCoordinate = x; changingCoordinate < targetXCoordinate; changingCoordinate++) {
+                if (!ocean[changingCoordinate][y].getStatus().equals(SquareStatus.EMPTY)) {
                     return false;
                 }
             }
