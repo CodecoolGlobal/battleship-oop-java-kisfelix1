@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import static com.codecool.battleship.core.SquareStatus.HIT;
 
 public abstract class Player {
-    private ArrayList<Ship> playerShips = new ArrayList<>();
-    private Board board;
-    private String name;
+    protected ArrayList<Ship> playerShips = new ArrayList<>();
+    protected Board board;
+    protected String name;
 
     public Player(String name) {
         this.name = name;
@@ -40,7 +40,10 @@ public abstract class Player {
         }
         return false;
     }
+
     public void getHit(int x, int y) {
         this.board.setSquareStatusHit(x, y);
     }
+
+    public abstract void shoot(Player player);
 }

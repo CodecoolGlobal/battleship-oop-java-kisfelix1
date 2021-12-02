@@ -2,7 +2,7 @@ package com.codecool.battleship.core;
 
 public class Board {
 
-    private Square[][] ocean;
+    private final Square[][] ocean;
 
     public Board(int mapSize) {
         ocean = new Square[mapSize][mapSize];
@@ -21,9 +21,6 @@ public class Board {
         return ocean[x][y];
     }
 
-    public void setOceanSquare(int x, int y, Square value) {
-        ocean[x][y] = value;
-    }
     public void setSquareStatusHit(int x, int y) {
         ocean[x][y].setStatus(ocean[x][y].getStatus() == SquareStatus.SHIP ? SquareStatus.HIT : SquareStatus.MISSED);
     }
