@@ -1,7 +1,5 @@
 package com.codecool.battleship;
 
-import com.codecool.battleship.core.Board;
-import com.codecool.battleship.core.BoardFactory;
 import com.codecool.battleship.core.Player;
 import com.codecool.battleship.utility.*;
 
@@ -52,7 +50,7 @@ public class Game {
     private void playerShoot() {
         int[] validCoordinates = input.askAttackCoordinate(currentRoundPlayer.getName(), getOtherPlayer().getBoard());
         getOtherPlayer().getHit(validCoordinates[0], validCoordinates[1]);
-        }
+    }
 
     private boolean checkWin() {
         return false;

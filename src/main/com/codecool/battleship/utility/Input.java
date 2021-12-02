@@ -81,4 +81,9 @@ public class Input {
     public String askUserInput() {
         return inputScan.nextLine();
     }
+
+    public String askUserInput(String string) {
+        display.println(string);
+        return inputScan.nextLine();
+    }
 }

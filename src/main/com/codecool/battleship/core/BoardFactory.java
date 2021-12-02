@@ -16,11 +16,13 @@ public class BoardFactory {
         board = new Board(MAP_SIZE);
         this.player = player;
         this.player.setBoard(board);
-        if(player.getName().equals("AI"))
-        {
+        placeShips(player);
+    }
+
+    private void placeShips(Player player) {
+        if (player.getName().equals("AI")) {
             randomPlacement();
-        }
-        else{
+        } else {
             manualPlacement();
         }
     }
@@ -38,22 +40,28 @@ public class BoardFactory {
     }
 
     private void tryManualPlacement(ShipType type) {
-        String direction = getPlacementDirection();
         Display display = new Display();
         display.printBoard(board);
-        String move = input.askPlacementCoordinate(type);
-        int[] shipCoordinates = input.convertStringToMove(move);
+        String direction = getPlacementDirection();
+        String placement = input.askPlacementCoordinate(type);
+        int[] shipCoordinates = input.convertStringToMove(placement);
         Ship ship = new Ship(type);
         if (board.isPlacementOk(shipCoordinates[0], shipCoordinates[1], ship, direction)) {
             placeShip(shipCoordinates[0], shipCoordinates[1], ship, direction);
-        }
-        else{
+        } else {
             tryManualPlacement(type);
         }
     }
 
     private String getPlacementDirection() {
-        return "";
+        String direction = input.askUserInput("Placement direction:\n[h] - horizontal\n[v] - vertical");
+        if (direction.equals("h")) {
+            return "horizontal";
+        } else if (direction.equals("v")) {
+            return "vertical";
+        } else {
+            return getPlacementDirection();
+        }
     }
 
     private void tryRandomPlaceShip(ShipType type, String direction) {
@@ -62,8 +70,7 @@ public class BoardFactory {
         Ship ship = new Ship(type);
         if (board.isPlacementOk(x, y, ship, direction)) {
             placeShip(x, y, ship, direction);
-        }
-        else{
+        } else {
             tryRandomPlaceShip(type, direction);
         }
     }
@@ -76,8 +83,7 @@ public class BoardFactory {
                 Square targetSquare = board.getSquare(fromXCoordinate, column);
                 ship.addPosition(targetSquare);
             }
-        }
-        else {
+        } else {
             int toXCoordinate = fromXCoordinate + shipSize;
             for (int row = fromXCoordinate; row < toXCoordinate; row++) {
                 Square targetSquare = board.getSquare(row, fromYCoordinate);
