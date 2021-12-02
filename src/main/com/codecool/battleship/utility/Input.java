@@ -32,6 +32,9 @@ public class Input {
         display.println("Player " + player + ", input an attack coordinate!");
         String userInput = inputScan.nextLine();
         while (!isValidCoordinateForm(userInput) || !isInsideBoard(userInput, attackedBoard)) {
+            if (userInput.equalsIgnoreCase("NUKE")) {
+                return new int[] {00000000};
+            }
             display.print(!isValidCoordinateForm(userInput) ? "Invalid coordinate. " : "Coordinate out of bound. ");
             display.println("Please try again!");
             userInput = inputScan.nextLine();

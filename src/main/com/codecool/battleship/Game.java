@@ -30,7 +30,7 @@ public class Game {
             playerShoot();
             changeCurrentPlayer();
         }
-        display.printWinner(player1.isAlive() ? player2.getName() : player1.getName());
+        display.printWinner(player1.isAlive() ? player1.getName() : player2.getName());
     }
 
     private void changeCurrentPlayer() {
@@ -52,13 +52,27 @@ public class Game {
 
     private void playerShoot() {
         int[] validCoordinates = input.askAttackCoordinate(currentRoundPlayer.getName(), getOtherPlayer().getBoard());
-        getOtherPlayer().getHit(validCoordinates[0], validCoordinates[1]);
+        System.out.println(validCoordinates);
+        if (validCoordinates[0] == 00000000) {
+            System.out.println("asd");
+            initiateNukeCheat();
+        } else {
+            getOtherPlayer().getHit(validCoordinates[0], validCoordinates[1]);
         }
+    }
 
     private boolean checkWin() {
         return player1.isAlive() && player2.isAlive();
     }
-//    private void initiateNukeCheat()
+    private void initiateNukeCheat() {
+        for (int row = 0; row < currentRoundPlayer.getBoard().getOcean().length; row++) {
+            for (int col = 0; col < currentRoundPlayer.getBoard().getOcean().length; col++) {
+                getOtherPlayer().getHit(row, col);
+            }
+
+        }
+        display.printBoard(getOtherPlayer().getBoard(), false);
+    }
 
 
 }
