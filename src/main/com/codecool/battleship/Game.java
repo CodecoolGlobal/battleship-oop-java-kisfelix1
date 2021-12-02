@@ -26,7 +26,7 @@ public class Game {
 
     public void gameCycle() {
         while (!checkWin()) {
-            display.printBoard(getOtherPlayer().getBoard());
+            display.printBoard(getOtherPlayer().getBoard(), false);
             playerShoot();
             changeCurrentPlayer();
         }
